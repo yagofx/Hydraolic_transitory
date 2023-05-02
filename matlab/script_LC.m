@@ -6,7 +6,9 @@
 
 format long
 disp('P4-EFM-Transitorios hidraulicos')
+
 % Constantes
+
 g = 9.81; % m/s2 gravedad
 
 % Fluido-agua
@@ -88,3 +90,11 @@ fplot(@(x)deval(sol,x,1), [0, 30])
 title('EDO - Circuit curt','Interpreter','latex')
 xlabel('time (s)','Interpreter','latex')
 ylabel('z(t) (m)','Interpreter','latex')
+
+hold on
+plot(times5,PresinmbargP_difmbar5) 
+hold off
+
+legend('númeric','experimental')
+
+

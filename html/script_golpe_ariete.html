@@ -1,0 +1,214 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>script_golpe_ariete</title><meta name="generator" content="MATLAB 9.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-03"><meta name="DC.source" content="script_golpe_ariete.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Import data from spreadsheet</a></li><li><a href="#3">Set up the Import Options and import the data</a></li><li><a href="#4">Convert to output type</a></li><li><a href="#5">Clear temporary variables</a></li><li><a href="#6">Set up the Import Options and import the data</a></li><li><a href="#7">Convert to output type</a></li><li><a href="#8">Clear temporary variables</a></li></ul></div><pre class="codeinput"><span class="comment">%-------------------------------------------</span>
+<span class="comment">%</span>
+<span class="comment">%       P4-EFM-Transitorios hidraulicos</span>
+<span class="comment">%</span>
+<span class="comment">%-------------------------------------------</span>
+
+<span class="comment">%Golpe d'ariete curt</span>
+</pre><h2 id="2">Import data from spreadsheet</h2><p>Script for importing data from the following spreadsheet:</p><pre>  Workbook: C:\Users\Yago\OneDrive - Universitat Polit&egrave;cnica de Catalunya\Q6\EFM\Practicas\P4\M12-xemeneia.xlsx
+  Worksheet: xemeneia curt</pre><p>Auto-generated by MATLAB on 02-May-2023 17:00:26</p><h2 id="3">Set up the Import Options and import the data</h2><pre class="codeinput">opts = spreadsheetImportOptions(<span class="string">"NumVariables"</span>, 3);
+
+<span class="comment">% Specify sheet and range</span>
+opts.Sheet = <span class="string">"xemeneia curt"</span>;
+opts.DataRange = <span class="string">"A3:C403"</span>;
+
+<span class="comment">% Specify column names and types</span>
+opts.VariableNames = [<span class="string">"Var1"</span>, <span class="string">"times1"</span>, <span class="string">"PresinbargP_Ariete"</span>];
+opts.SelectedVariableNames = [<span class="string">"times1"</span>, <span class="string">"PresinbargP_Ariete"</span>];
+opts.VariableTypes = [<span class="string">"char"</span>, <span class="string">"double"</span>, <span class="string">"double"</span>];
+
+<span class="comment">% Specify variable properties</span>
+opts = setvaropts(opts, <span class="string">"Var1"</span>, <span class="string">"WhitespaceRule"</span>, <span class="string">"preserve"</span>);
+opts = setvaropts(opts, <span class="string">"Var1"</span>, <span class="string">"EmptyFieldRule"</span>, <span class="string">"auto"</span>);
+
+<span class="comment">% Import the data</span>
+tbl = readtable(<span class="string">"C:\Users\Yago\OneDrive - Universitat Polit&egrave;cnica de Catalunya\Q6\EFM\Practicas\P4\M12-xemeneia.xlsx"</span>, opts, <span class="string">"UseExcel"</span>, false);
+</pre><h2 id="4">Convert to output type</h2><pre class="codeinput">times1 = tbl.times1;
+PresinbargP_Ariete1 = tbl.PresinbargP_Ariete;
+</pre><h2 id="5">Clear temporary variables</h2><pre class="codeinput">clear <span class="string">opts</span> <span class="string">tbl</span>
+</pre><h2 id="6">Set up the Import Options and import the data</h2><pre class="codeinput">opts = spreadsheetImportOptions(<span class="string">"NumVariables"</span>, 3);
+
+<span class="comment">% Specify sheet and range</span>
+opts.Sheet = <span class="string">"xemeneia llarg"</span>;
+opts.DataRange = <span class="string">"A3:C495"</span>;
+
+<span class="comment">% Specify column names and types</span>
+opts.VariableNames = [<span class="string">"Var1"</span>, <span class="string">"times1"</span>, <span class="string">"PresinbargP_Ariete"</span>];
+opts.SelectedVariableNames = [<span class="string">"times1"</span>, <span class="string">"PresinbargP_Ariete"</span>];
+opts.VariableTypes = [<span class="string">"char"</span>, <span class="string">"double"</span>, <span class="string">"double"</span>];
+
+<span class="comment">% Specify variable properties</span>
+opts = setvaropts(opts, <span class="string">"Var1"</span>, <span class="string">"WhitespaceRule"</span>, <span class="string">"preserve"</span>);
+opts = setvaropts(opts, <span class="string">"Var1"</span>, <span class="string">"EmptyFieldRule"</span>, <span class="string">"auto"</span>);
+
+<span class="comment">% Import the data</span>
+tbl = readtable(<span class="string">"C:\Users\Yago\OneDrive - Universitat Polit&egrave;cnica de Catalunya\Q6\EFM\Practicas\P4\M12-xemeneia.xlsx"</span>, opts, <span class="string">"UseExcel"</span>, false);
+</pre><h2 id="7">Convert to output type</h2><pre class="codeinput">times2 = tbl.times1;
+PresinbargP_Ariete2 = tbl.PresinbargP_Ariete;
+</pre><h2 id="8">Clear temporary variables</h2><pre class="codeinput">clear <span class="string">opts</span> <span class="string">tbl</span>
+
+<span class="comment">% Plotting</span>
+figure
+plot(times1,PresinbargP_Ariete1)
+title(<span class="string">'Cop ariet curt'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>)
+xlabel(<span class="string">'time (s)'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>)
+ylabel(<span class="string">'p (barg)'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>)
+
+figure
+plot(times2,PresinbargP_Ariete2)
+title(<span class="string">'Cop ariet llarg'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>)
+xlabel(<span class="string">'time (s)'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>)
+ylabel(<span class="string">'p (barg)'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>)
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+%
+%       P4-EFM-Transitorios hidraulicos
+%
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+
+%Golpe d'ariete curt
+
+%% Import data from spreadsheet
+% Script for importing data from the following spreadsheet:
+%
+%    Workbook: C:\Users\Yago\OneDrive - Universitat Politècnica de Catalunya\Q6\EFM\Practicas\P4\M12-xemeneia.xlsx
+%    Worksheet: xemeneia curt
+%
+% Auto-generated by MATLAB on 02-May-2023 17:00:26
+
+%% Set up the Import Options and import the data
+opts = spreadsheetImportOptions("NumVariables", 3);
+
+% Specify sheet and range
+opts.Sheet = "xemeneia curt";
+opts.DataRange = "A3:C403";
+
+% Specify column names and types
+opts.VariableNames = ["Var1", "times1", "PresinbargP_Ariete"];
+opts.SelectedVariableNames = ["times1", "PresinbargP_Ariete"];
+opts.VariableTypes = ["char", "double", "double"];
+
+% Specify variable properties
+opts = setvaropts(opts, "Var1", "WhitespaceRule", "preserve");
+opts = setvaropts(opts, "Var1", "EmptyFieldRule", "auto");
+
+% Import the data
+tbl = readtable("C:\Users\Yago\OneDrive - Universitat Politècnica de Catalunya\Q6\EFM\Practicas\P4\M12-xemeneia.xlsx", opts, "UseExcel", false);
+
+%% Convert to output type
+times1 = tbl.times1;
+PresinbargP_Ariete1 = tbl.PresinbargP_Ariete;
+
+%% Clear temporary variables
+clear opts tbl
+
+%% Set up the Import Options and import the data
+opts = spreadsheetImportOptions("NumVariables", 3);
+
+% Specify sheet and range
+opts.Sheet = "xemeneia llarg";
+opts.DataRange = "A3:C495";
+
+% Specify column names and types
+opts.VariableNames = ["Var1", "times1", "PresinbargP_Ariete"];
+opts.SelectedVariableNames = ["times1", "PresinbargP_Ariete"];
+opts.VariableTypes = ["char", "double", "double"];
+
+% Specify variable properties
+opts = setvaropts(opts, "Var1", "WhitespaceRule", "preserve");
+opts = setvaropts(opts, "Var1", "EmptyFieldRule", "auto");
+
+% Import the data
+tbl = readtable("C:\Users\Yago\OneDrive - Universitat Politècnica de Catalunya\Q6\EFM\Practicas\P4\M12-xemeneia.xlsx", opts, "UseExcel", false);
+
+%% Convert to output type
+times2 = tbl.times1;
+PresinbargP_Ariete2 = tbl.PresinbargP_Ariete;
+
+%% Clear temporary variables
+clear opts tbl
+
+% Plotting
+figure
+plot(times1,PresinbargP_Ariete1)
+title('Cop ariet curt','Interpreter','latex')
+xlabel('time (s)','Interpreter','latex')
+ylabel('p (barg)','Interpreter','latex')
+
+figure
+plot(times2,PresinbargP_Ariete2)
+title('Cop ariet llarg','Interpreter','latex')
+xlabel('time (s)','Interpreter','latex')
+ylabel('p (barg)','Interpreter','latex')
+##### SOURCE END #####
+--></body></html>
